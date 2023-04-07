@@ -1,6 +1,7 @@
 from selectolax.parser import Node
 from datetime import datetime
 import re
+import pandas as pd
 
 def get_attrs_from_node(node: Node, attr: str):
     if node is None or not issubclass(Node, type(node)):
@@ -44,4 +45,12 @@ def format_and_transform(attrs: dict):
         if k in attrs:
             attrs[k] = v(attrs[k])
 
+    attrs["discount_pct"] = round(100 * (attrs["original_price"] - attrs["sale_price"])/(attrs["original_price"]), 2)
     return attrs
+
+def save_to_file(filename="extract", data: list[dict] =None):
+    if data is None:
+        raise ValueError("This function expects data to be provided as a list of dictionnaries")
+    filename = f"{datetime.now().strftime('%Y_%m_%d')}_{filename}.csv"
+    df = pd.DataFrame(data)
+    df.to_csv(filename, index=False)

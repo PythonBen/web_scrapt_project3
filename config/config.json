@@ -1,5 +1,10 @@
 {
     "url": "https://store.steampowered.com/specials",
+    "meta": {
+        "name": "Steam sales scraper",
+        "description": "Extracts the discounted games from Steam",
+        "author": "BL, (andy beck from Udemy)"
+    },
     "container": {
         "name": "store_sale_divs",
         "selector": "div[class*=\"salepreviewwidgets_StoreSaleWidgetContainer\"]",
@@ -38,8 +43,14 @@
             "type": "text"
         },
         {
-            "name": "review_by",
+            "name": "reviewed_by",
             "selector": "div[class*=\"ReviewScoreCount\"]",
+            "match": "first",
+            "type": "text"
+        },
+        {
+            "name": "price_currency",
+            "selector": "div[class*=\"StoreSalePriceBox\"]",
             "match": "first",
             "type": "text"
         },
