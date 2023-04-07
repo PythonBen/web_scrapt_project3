@@ -1,0 +1,11 @@
+Javascript scraping with playright
+
+https://store.steampowered.com/specials
+- title
+- link to thumbnail
+- category tags
+- rating
+# of reviews
+- original price
+- discounted price
+- discount in %
